@@ -2,29 +2,33 @@
   "name": "react-tutorial",
   "version": "0.0.0",
   "description": "Code from the React tutorial.",
-  "main": "server.js",
+  "main": "app/app.js",
   "dependencies": {
-    "body-parser": "^1.4.3",
-    "express": "^4.4.5"
+    "es5-shim": "*",
+    "flux": "^2.0.1",
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
+    "react": "^0.12.0"    
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "~0.1.17",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"    
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "watchify -o app/bundle.js -v -d .",
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reactjs/react-tutorial.git"
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
   },
-  "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
-  ],
-  "author": "petehunt",
-  "bugs": {
-    "url": "https://github.com/reactjs/react-tutorial/issues"
-  },
-  "homepage": "https://github.com/reactjs/react-tutorial"
+  "jest": {
+    "rootDir": "./app"
+  }
 }
